@@ -155,7 +155,7 @@ namespace Asteroids
             position = player.position;
 
             // The bullet spawns inside the player. This isnt too bad since its pretty fast.
-            // So didnt offset it correctly
+            // So I didnt offset it correctly
 
 
             direction = direction.Rotate(player.rotation-90);
