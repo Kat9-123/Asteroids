@@ -1,5 +1,5 @@
 # Asteroids
 **A console version of Asteroids written in C#**
 
-It's a bit messy, but I'm quite happy with how it turned out.
+It's a bit messy, but I'm quite happy with it.
 
