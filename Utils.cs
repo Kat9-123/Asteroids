@@ -227,7 +227,7 @@ namespace Asteroids
         public Polygon OffsetPolygon(Vector position, float rotation)
         {
 
-			// Create new polygon
+            // Create new polygon
             Polygon poly = new Polygon();
             poly.vectors = new Vector[vectors.Length];
 

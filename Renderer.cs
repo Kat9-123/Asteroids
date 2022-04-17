@@ -96,8 +96,8 @@ namespace Asteroids
             // Clean buffer
             char[,] result = EmptyImage();
 
-	
-			// Make an array of all of the current polygons. 
+    
+            // Make an array of all of the current polygons. 
             // Also apply all position and rotations
             Polygon[] polygons = new Polygon[gameObjects.Count];
             for (int i = 0; i < gameObjects.Count; i++)
@@ -106,7 +106,7 @@ namespace Asteroids
             }
 
 
-			// Rasterisation process
+            // Rasterisation process
             for (int y = 0; y < Utils.SCREEN_SIZE_Y; y++)
             {
                 for (int x = 0; x < Utils.SCREEN_SIZE_X; x++)
@@ -126,7 +126,7 @@ namespace Asteroids
 
 
                             // Very questionable physics
-							Physics.TestPlayerCollision(result[y,x],gameObjects[i].character);
+                            Physics.TestPlayerCollision(result[y,x],gameObjects[i].character);
 
                             
                             // Place the character
@@ -146,8 +146,8 @@ namespace Asteroids
         // Adapted form: stackoverflow.com/questions/2754518/how-can-i-write-fast-colored-output-to-console
         // Though printing is normally fast enough, its very slow when using different colours
         [STAThread]
-		public static void Draw(char[,] image)
-		{
+        public static void Draw(char[,] image)
+        {
             if (!safeFileHandle.IsInvalid)
             {
                 CharInfo[] buf = new CharInfo[Utils.SCREEN_SIZE_X * Utils.SCREEN_SIZE_Y];
@@ -207,10 +207,10 @@ namespace Asteroids
 
 
 
-			Console.SetCursorPosition(0,0);
+            Console.SetCursorPosition(0,0);
 
-		}
-    	
+        }
+        
         // Hacked in UI module
         public static char[,] AddUI(char[,] image)
         {
@@ -267,7 +267,7 @@ namespace Asteroids
             return image;
         }
 
-	}
+    }
 
 
 

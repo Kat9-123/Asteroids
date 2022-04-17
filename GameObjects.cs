@@ -21,8 +21,12 @@ namespace Asteroids
             Random rng = new Random();
             type = _type;
             int p = 0;
+
+            // Choose a random polygon depending on the type of asteroid.
+
             switch(type)
             {
+                // Big
                 case 2:
                     
                     p = rng.Next(0,2);
@@ -56,6 +60,7 @@ namespace Asteroids
                     character = '2';
                     break;
 
+                // Medium
                 case 1:
                     p = rng.Next(0,2);
 
@@ -86,6 +91,7 @@ namespace Asteroids
                     character = '1';
                     break;
 
+                // Small
                 case 0:
                     p = rng.Next(0,2);
                     if (p == 0)
@@ -155,8 +161,7 @@ namespace Asteroids
             position = player.position;
 
             // The bullet spawns inside the player. This isnt too bad since its pretty fast.
-            // So I didnt offset it correctly
-
+            // So didnt offset it correctly
 
             direction = direction.Rotate(player.rotation-90);
             largestSize = polygon.GetLargestSize();
@@ -190,6 +195,7 @@ namespace Asteroids
 
         }
 
+        // Reset the player 
         public void Reset()
         {
             position = new Vector(Utils.SCREEN_SIZE_X/2,Utils.SCREEN_SIZE_Y/2);
