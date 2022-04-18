@@ -44,6 +44,6 @@ The comments are lacking though.
 
 
 
-* *outline settings are only available in the premium® package.*
+*<i>outline settings are only available in the premium® package.</i>
 
 (/j)
