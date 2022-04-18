@@ -21,7 +21,7 @@ namespace Asteroids
 
         public const string FONT = "Courier New";
 
-        public const bool DECELERATE = false;
+        public const bool DECELERATE = true;
 
 
         public const char PLAYER_CHARACTER = '#';
