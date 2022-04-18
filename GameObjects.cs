@@ -197,7 +197,7 @@ namespace Asteroids
         // Reset the player 
         public void Reset()
         {
-            position = new Vector(Utils.SCREEN_SIZE_X/2,Utils.SCREEN_SIZE_Y/2);
+            position = new Vector(Settings.SCREEN_SIZE_X/2,Settings.SCREEN_SIZE_Y/2);
             rotation = 0f;
             playerMotion = new Vector(0,0);
             
@@ -231,16 +231,25 @@ namespace Asteroids
             {
                 float distance = (float) Math.Sqrt(playerMovementVector.x * playerMovementVector.x + playerMovementVector.y * playerMovementVector.y);
                 Vector motion = new Vector(playerMovementVector.x / distance, playerMovementVector.y / distance);
-                motion.x *= 1;
-                motion.y *= 1;
+
+                // Determine speed depending on the settings
+                float speed = 1;
+                if (!Settings.DECELERATE) speed = 0.4f;
+
+                motion.x *= speed;
+                motion.y *= speed;
 
                 playerMotion.x += motion.x;
                 playerMotion.y += motion.y;
             }
 
-            // Slow the player down
-            playerMotion.x -= playerMotion.x/80;
-            playerMotion.y -= playerMotion.y/80;
+            // Decelerate the player
+            if (Settings.DECELERATE)
+            {
+                playerMotion.x -= playerMotion.x/80;
+                playerMotion.y -= playerMotion.y/80;
+            }
+
 
 
             // Apply motion

@@ -16,8 +16,8 @@ namespace Asteroids
         // if feels more fair)
         public static void TestPlayerCollision(char a, char b)
         {
-            if (a == Utils.PLAYER_CHARACTER && 
-                (b == Utils.BIG_ASTEROID_CHARACTER || b == Utils.MEDIUM_ASTEROID_CHARACTER || b == Utils.SMALL_ASTEROID_CHARACTER)
+            if (a == Settings.PLAYER_CHARACTER && 
+                (b == Settings.BIG_ASTEROID_CHARACTER || b == Settings.MEDIUM_ASTEROID_CHARACTER || b == Settings.SMALL_ASTEROID_CHARACTER)
                 )
             {
                 GameManager.GameOver();

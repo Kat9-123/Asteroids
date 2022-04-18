@@ -78,10 +78,10 @@ namespace Asteroids
         // Generate a full buffer of whitespaces
         public static char[,] EmptyImage()
         {
-            char[,] result = new char[Utils.SCREEN_SIZE_Y,Utils.SCREEN_SIZE_X];
-            for (int y = 0; y < Utils.SCREEN_SIZE_Y; y++)
+            char[,] result = new char[Settings.SCREEN_SIZE_Y,Settings.SCREEN_SIZE_X];
+            for (int y = 0; y < Settings.SCREEN_SIZE_Y; y++)
             {
-                for (int x = 0; x < Utils.SCREEN_SIZE_X; x++)
+                for (int x = 0; x < Settings.SCREEN_SIZE_X; x++)
                 {
                     result[y,x] = ' ';
                 }
@@ -107,9 +107,9 @@ namespace Asteroids
 
 
             // Rasterisation process
-            for (int y = 0; y < Utils.SCREEN_SIZE_Y; y++)
+            for (int y = 0; y < Settings.SCREEN_SIZE_Y; y++)
             {
-                for (int x = 0; x < Utils.SCREEN_SIZE_X; x++)
+                for (int x = 0; x < Settings.SCREEN_SIZE_X; x++)
                 {
                     for (int i = 0; i < polygons.Length; i++)
                     {
@@ -152,43 +152,43 @@ namespace Asteroids
         {
             if (!safeFileHandle.IsInvalid)
             {
-                CharInfo[] buf = new CharInfo[Utils.SCREEN_SIZE_X * Utils.SCREEN_SIZE_Y];
-                SmallRect rect = new SmallRect() { Left = 0, Top = 0, Right = Utils.SCREEN_SIZE_X, Bottom = Utils.SCREEN_SIZE_Y };
+                CharInfo[] buf = new CharInfo[Settings.SCREEN_SIZE_X * Settings.SCREEN_SIZE_Y];
+                SmallRect rect = new SmallRect() { Left = 0, Top = 0, Right = Settings.SCREEN_SIZE_X, Bottom = Settings.SCREEN_SIZE_Y };
 
   
-                for (int y = 0; y < Utils.SCREEN_SIZE_Y; y++)
+                for (int y = 0; y < Settings.SCREEN_SIZE_Y; y++)
                 {
-                    for (int x = 0; x < Utils.SCREEN_SIZE_X; x++)
+                    for (int x = 0; x < Settings.SCREEN_SIZE_X; x++)
                     {
                         char c = image[y,x];
                         
                         // Only draw a pixel if it has less than 4 neighbours
                         // It shouldnt be applied to the UI
-                        if (Utils.OUTLINE_MODE > 0 && c != Utils.SCORE_CHARACTER && c != Utils.HIGHSCORE_CHARACTER)
+                        if (Settings.OUTLINE_MODE > 0 && c != Settings.SCORE_CHARACTER && c != Settings.HIGHSCORE_CHARACTER)
                         {
                             int n = 0;
-                            if (Utils.OUTLINE_MODE == 2)
+                            if (Settings.OUTLINE_MODE == 2)
                             {
                                 if(x < 1 || y < 1 || image[y-1,x-1] != ' ') n++;
-                                if(x < 1 || y > Utils.SCREEN_SIZE_Y-2 || image[y+1,x-1] != ' ') n++;
+                                if(x < 1 || y > Settings.SCREEN_SIZE_Y-2 || image[y+1,x-1] != ' ') n++;
 
-                                if(y < 1 || x > Utils.SCREEN_SIZE_X-2 || image[y-1,x+1] != ' ') n++;
-                                if(y > Utils.SCREEN_SIZE_Y-2 || x > Utils.SCREEN_SIZE_X-2 || image[y+1,x+1] != ' ') n++;
+                                if(y < 1 || x > Settings.SCREEN_SIZE_X-2 || image[y-1,x+1] != ' ') n++;
+                                if(y > Settings.SCREEN_SIZE_Y-2 || x > Settings.SCREEN_SIZE_X-2 || image[y+1,x+1] != ' ') n++;
                             }
 
                             if(y < 1 || image[y-1,x] != ' ') n++;
-                            if(y > Utils.SCREEN_SIZE_Y-2 || image[y+1,x] != ' ') n++;
+                            if(y > Settings.SCREEN_SIZE_Y-2 || image[y+1,x] != ' ') n++;
                             if(x < 1 || image[y,x-1] != ' ') n++;
-                            if(x > Utils.SCREEN_SIZE_X-2 || image[y,x+1] != ' ') n++;
+                            if(x > Settings.SCREEN_SIZE_X-2 || image[y,x+1] != ' ') n++;
 
                             // Bit hacky, 4*1 = 4 (thin), 4*2 = 8 (thick)
-                            if(n == 4*Utils.OUTLINE_MODE) c  = ' ';
+                            if(n == 4*Settings.OUTLINE_MODE) c  = ' ';
                         }
 
 
 
                         // Move character to new buffer
-                        buf[y*Utils.SCREEN_SIZE_X + x].Char.AsciiChar = Convert.ToByte(c);
+                        buf[y*Settings.SCREEN_SIZE_X + x].Char.AsciiChar = Convert.ToByte(c);
                     
                         
 
@@ -197,28 +197,28 @@ namespace Asteroids
                         switch(image[y,x])
                         {
 
-                            case Utils.PLAYER_CHARACTER:
+                            case Settings.PLAYER_CHARACTER:
                                 col = 2; // Green
                                 break;
-                            case Utils.BULLET_CHARACTER:
+                            case Settings.BULLET_CHARACTER:
                                 col = 4; // Red
                                 break;
                             
-                            case Utils.BIG_ASTEROID_CHARACTER:
-                            case Utils.MEDIUM_ASTEROID_CHARACTER:
-                            case Utils.SMALL_ASTEROID_CHARACTER:
+                            case Settings.BIG_ASTEROID_CHARACTER:
+                            case Settings.MEDIUM_ASTEROID_CHARACTER:
+                            case Settings.SMALL_ASTEROID_CHARACTER:
                                 col = 15; // White
                                 break;
 
-                            case Utils.HIGHSCORE_CHARACTER:
+                            case Settings.HIGHSCORE_CHARACTER:
                                 col = 8; // Grey
                                 break;
                             
-                            case Utils.SCORE_CHARACTER:
+                            case Settings.SCORE_CHARACTER:
                                 col = 6; // Gold
                                 break;
                         }  
-                        buf[y*Utils.SCREEN_SIZE_X + x].Attributes = col;
+                        buf[y*Settings.SCREEN_SIZE_X + x].Attributes = col;
 
 
                     }
@@ -229,7 +229,7 @@ namespace Asteroids
 
                 // Write to screen
                 bool b = WriteConsoleOutputW(safeFileHandle, buf,
-                    new Coord() { X = Utils.SCREEN_SIZE_X, Y = Utils.SCREEN_SIZE_Y },
+                    new Coord() { X = Settings.SCREEN_SIZE_X, Y = Settings.SCREEN_SIZE_Y },
                     new Coord() { X = 0, Y = 0 },
                     ref rect
                 );
@@ -279,14 +279,14 @@ namespace Asteroids
                         {
                             // Place the correct pixel from the correct number at the correct location
                             // and add some offsets
-                            image[y+1 + 6*type,x+1+index*7] = Utils.SCORE_CHARACTER;
+                            image[y+1 + 6*type,x+1+index*7] = Settings.SCORE_CHARACTER;
                         }
                         // High score
                         else if (type == 1)
                         {
                             // Place the correct pixel from the correct number at the correct location
                             // and add some offsets     
-                            image[y+1 + 6*type,x+1+index*7] = Utils.HIGHSCORE_CHARACTER;
+                            image[y+1 + 6*type,x+1+index*7] = Settings.HIGHSCORE_CHARACTER;
                         }
                         
                     }

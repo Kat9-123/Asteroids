@@ -19,11 +19,11 @@ namespace Asteroids
             Console.Title = "Asteroids | By: Kat9_123";
 
             // I thought that Courier New looked alright
-            ConsoleHelper.SetCurrentFont(Utils.FONT, 7);
+            ConsoleHelper.SetCurrentFont(Settings.FONT, 7);
             
             // These were the values that worked.
-            Console.SetWindowSize(Utils.SCREEN_SIZE_X + 1,Utils.SCREEN_SIZE_Y + 2);
-            Console.SetBufferSize(Utils.SCREEN_SIZE_X + 1,Utils.SCREEN_SIZE_Y + 2);
+            Console.SetWindowSize(Settings.SCREEN_SIZE_X + 1,Settings.SCREEN_SIZE_Y + 2);
+            Console.SetBufferSize(Settings.SCREEN_SIZE_X + 1,Settings.SCREEN_SIZE_Y + 2);
             Console.CursorVisible = false;
 
             // Load the highscore, if the file is present.
@@ -157,7 +157,7 @@ namespace Asteroids
                 if (paused)
                 {
                     // Write PAUSED to the centre of the screen (ish)
-                    Console.SetCursorPosition(Utils.SCREEN_SIZE_X/2 - 2, Utils.SCREEN_SIZE_Y /2);
+                    Console.SetCursorPosition(Settings.SCREEN_SIZE_X/2 - 2, Settings.SCREEN_SIZE_Y /2);
                     Console.WriteLine("PAUSED");
 
                     Thread.Sleep(50);
@@ -175,7 +175,7 @@ namespace Asteroids
                 
                 Update((float)deltaTime);
 
-                if(Utils.SHOW_FPS) Console.Title = "Asteroids | By: Kat9_123 | FPS: " + ((int) (1/deltaTime)).ToString();
+                if(Settings.SHOW_FPS) Console.Title = "Asteroids | By: Kat9_123 | FPS: " + ((int) (1/deltaTime)).ToString();
 
                 Renderer.Draw(Renderer.Render(gameObjects));
                 
@@ -258,10 +258,10 @@ namespace Asteroids
                 if (obj.position.x < -size.x) 
                 {
                     if(obj is Bullet) {obj.Destroy(); continue;}
-                    obj.position.x = Utils.SCREEN_SIZE_X+1;
+                    obj.position.x = Settings.SCREEN_SIZE_X+1;
                 }
 
-                if (obj.position.x > Utils.SCREEN_SIZE_X+1) 
+                if (obj.position.x > Settings.SCREEN_SIZE_X+1) 
                 {
                     if(obj is Bullet) {obj.Destroy(); continue;}
                     obj.position.x = -size.x;
@@ -270,9 +270,9 @@ namespace Asteroids
                 if (obj.position.y < -size.y)
                 {
                     if(obj is Bullet) {obj.Destroy(); continue;}
-                    obj.position.y = Utils.SCREEN_SIZE_Y+2;
+                    obj.position.y = Settings.SCREEN_SIZE_Y+2;
                 } 
-                if (obj.position.y > Utils.SCREEN_SIZE_Y+2) 
+                if (obj.position.y > Settings.SCREEN_SIZE_Y+2) 
                 {
                     if(obj is Bullet) {obj.Destroy(); continue;}
                     obj.position.y = -size.y;
@@ -295,25 +295,25 @@ namespace Asteroids
                 // Left
                 case 0:
                     pos.x = -30;
-                    pos.y = (float) (rng.NextDouble()*Utils.SCREEN_SIZE_Y);
+                    pos.y = (float) (rng.NextDouble()*Settings.SCREEN_SIZE_Y);
                     break;
                 
                 // Top
                 case 1:
                     pos.y = -18;
-                    pos.x = (float) (rng.NextDouble()*Utils.SCREEN_SIZE_X);
+                    pos.x = (float) (rng.NextDouble()*Settings.SCREEN_SIZE_X);
                     break;
 
                 // Right
                 case 2:
-                    pos.x = Utils.SCREEN_SIZE_X + 30;
-                    pos.y = (float) (rng.NextDouble()*Utils.SCREEN_SIZE_Y);
+                    pos.x = Settings.SCREEN_SIZE_X + 30;
+                    pos.y = (float) (rng.NextDouble()*Settings.SCREEN_SIZE_Y);
                     break;
 
                 // Bottom
                 case 3:
-                    pos.y = Utils.SCREEN_SIZE_Y + 18;
-                    pos.x = (float) (rng.NextDouble()*Utils.SCREEN_SIZE_X);
+                    pos.y = Settings.SCREEN_SIZE_Y + 18;
+                    pos.x = (float) (rng.NextDouble()*Settings.SCREEN_SIZE_X);
                     break;
             }
 
@@ -339,9 +339,9 @@ namespace Asteroids
 
 
             // Centred text
-            Console.SetCursorPosition(Utils.SCREEN_SIZE_X / 2 - 7, Utils.SCREEN_SIZE_Y / 2 - 2);
+            Console.SetCursorPosition(Settings.SCREEN_SIZE_X / 2 - 7, Settings.SCREEN_SIZE_Y / 2 - 2);
             Console.WriteLine("GAME OVER!");
-            Console.SetCursorPosition(Utils.SCREEN_SIZE_X / 2 - 12, Utils.SCREEN_SIZE_Y / 2 - 1);
+            Console.SetCursorPosition(Settings.SCREEN_SIZE_X / 2 - 12, Settings.SCREEN_SIZE_Y / 2 - 1);
             Console.WriteLine("Press R to try again");
 
 

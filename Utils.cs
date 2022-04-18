@@ -7,18 +7,21 @@ using System.IO;
 namespace Asteroids
 {
 
-    // All utility (and some other things) functions and variables.
-    static class Utils
+    // This class contains the "settings", though that doesn't mean much in an open source game like this.
+    // You can definitely play around with these values, if you want.
+    static class Settings
     {
-        
         // A bunch of constants. You can change these if you want
         public const bool SHOW_FPS = true;
 
         // 0 = Normal mode, 1 = Thin outlines, 2 = Thick outlines
         // It does reduce performance, so be wary
-        public const short OUTLINE_MODE = 0;
+        public const short OUTLINE_MODE = 2;
+        
 
         public const string FONT = "Courier New";
+
+        public const bool DECELERATE = false;
 
 
         public const char PLAYER_CHARACTER = '#';
@@ -35,6 +38,13 @@ namespace Asteroids
 
         public const int SCREEN_SIZE_X = 150;
         public const int SCREEN_SIZE_Y = 80;
+
+    }
+
+    // All utility (and some other things) functions and variables.
+    static class Utils
+    {
+    
 
 
         // Keycodes for GetAsyncKeyState
@@ -113,7 +123,7 @@ namespace Asteroids
             // If the checksum is invalid, shame the cheater.
             if (checkInt != Math.Abs(key + n))
             {
-                ConsoleHelper.SetCurrentFont(Utils.FONT,200);
+                ConsoleHelper.SetCurrentFont(Settings.FONT,200);
                 Console.SetWindowSize(7,1);
                 Console.SetBufferSize(8,1);
                 Console.Title = "Really?";
