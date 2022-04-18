@@ -16,9 +16,7 @@ The comments are lacking though.
 * P          : Pause
 
 
-<iframe width="420" height="315"
-src="https://www.youtube.com/watch?v=n2_1ikdUfK0">
-</iframe>
+<iframe width="420" height="315" src="https://www.youtube.com/watch?v=n2_1ikdUfK0"></iframe>
 
 
 
