@@ -34,7 +34,7 @@ The comments are lacking though.
 * UNLOCKED FPS
 * ***5*** COLOURS
 * HIGH RESOLUTION (150 x 80)
-* OUTLINE SETTINGS*
+* ADVANCED OUTLINE SETTINGS*
 
 
 
