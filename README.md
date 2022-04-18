@@ -4,7 +4,7 @@
 I made this in three days so it's a bit messy, but I'm quite happy with it.
 The comments are lacking though.
 
-Video: https://www.youtube.com/watch?v=n2_1ikdUfK0"
+Video: https://www.youtube.com/watch?v=n2_1ikdUfK0
 
 **CONTROLS**
 
