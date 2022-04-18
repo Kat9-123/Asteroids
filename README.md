@@ -16,7 +16,10 @@ The comments are lacking though.
 * P          : Pause
 
 
-https://www.youtube.com/watch?v=n2_1ikdUfK0
+<iframe width="420" height="315"
+src="https://www.youtube.com/watch?v=n2_1ikdUfK0">
+</iframe>
+
 
 
 **Outline Settings**
