@@ -15,6 +15,10 @@ The comments are lacking though.
 * Escape     : Exit
 * P          : Pause
 
+
+https://www.youtube.com/watch?v=n2_1ikdUfK0
+
+
 **Outline Settings**
 
 
