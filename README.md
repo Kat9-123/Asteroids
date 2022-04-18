@@ -32,11 +32,12 @@ The comments are lacking though.
 * YOU CAN SHOOT
 * THERE ARE 6 *6!* ASTEROIDS
 * UNLOCKED FPS
-* OUTLINE SETTINGS*
+* *5* COLOURS
 * HIGH RESOLUTION (150 x 80)
+* OUTLINE SETTINGS*
 
 
-(/j)
+
 
 
 
@@ -44,3 +45,5 @@ The comments are lacking though.
 
 
 * *outline settings are only available in the premium® package.*
+
+(/j)
