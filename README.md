@@ -29,11 +29,12 @@ The comments are lacking though.
 **FEATURES**
 * YOU CAN MOVE
 * YOU CAN ROTATE
-* THERE ARE 6 *6! ASTEROIDS
+* YOU CAN SHOOT
+* THERE ARE 6 *6!* ASTEROIDS
 * UNLOCKED FPS
 * OUTLINE SETTINGS*
 * HIGH RESOLUTION (150 x 80)
-* Pew Pew!
+
 
 (/j)
 
@@ -42,4 +43,4 @@ The comments are lacking though.
 
 
 
-*outline settings are only available in the premium® package.
+* *outline settings are only available in the premium® package.*
