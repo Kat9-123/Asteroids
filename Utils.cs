@@ -14,6 +14,10 @@ namespace Asteroids
         // A bunch of constants. You can change these if you want
         public const bool SHOW_FPS = true;
 
+        // 0 = Normal mode, 1 = Thin outlines, 2 = Thick outlines
+        // It does reduce performance, so be wary
+        public const short OUTLINE_MODE = 0;
+
         public const string FONT = "Courier New";
 
 

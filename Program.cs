@@ -21,13 +21,10 @@ namespace Asteroids
             // I thought that Courier New looked alright
             ConsoleHelper.SetCurrentFont(Utils.FONT, 7);
             
-            // These were the values that worked for me.
+            // These were the values that worked.
             Console.SetWindowSize(Utils.SCREEN_SIZE_X + 1,Utils.SCREEN_SIZE_Y + 2);
             Console.SetBufferSize(Utils.SCREEN_SIZE_X + 1,Utils.SCREEN_SIZE_Y + 2);
             Console.CursorVisible = false;
-
-
-
 
             // Load the highscore, if the file is present.
             if (File.Exists(Directory.GetCurrentDirectory() + "\\score"))
@@ -36,7 +33,6 @@ namespace Asteroids
             }
 
 
-        
             Renderer.Initialise();
           
             GameManager.Start();
@@ -51,7 +47,8 @@ namespace Asteroids
 
         // I know that GetAsyncKeyState is a very old way of doing input 
         // and that it will probably trigger keylogger detection but I don't think that it really matters. 
-        // It just works and its very simple. 
+        // It also detects input even though the window is not in focus, but again, that doesnt really matter.
+        // It just works and its very simple.
         [DllImport("user32.dll")]
         private static extern int GetAsyncKeyState(int vKeys);
 
@@ -83,7 +80,6 @@ namespace Asteroids
         private static float bulletTimer;
         private const float BULLET_DELAY = 0.4f;
     
-
         private static bool paused = false;
         private static bool justPaused = false;
 
@@ -188,7 +184,7 @@ namespace Asteroids
                 // Pause before starting
                 if (!started)
                 {
-                    Console.ReadKey();
+                    Console.ReadKey(true);
                     started = true;
                 }
             }

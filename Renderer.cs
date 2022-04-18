@@ -136,6 +136,8 @@ namespace Asteroids
                 }
             }
 
+ 
+
             // Apply the UI
             result = AddUI(result);
 
@@ -158,8 +160,37 @@ namespace Asteroids
                 {
                     for (int x = 0; x < Utils.SCREEN_SIZE_X; x++)
                     {
+                        char c = image[y,x];
+                        
+                        // Only draw a pixel if it has less than 4 neighbours
+                        // It shouldnt be applied to the UI
+                        if (Utils.OUTLINE_MODE > 0 && c != Utils.SCORE_CHARACTER && c != Utils.HIGHSCORE_CHARACTER)
+                        {
+                            int n = 0;
+                            if (Utils.OUTLINE_MODE == 2)
+                            {
+                                if(x < 1 || y < 1 || image[y-1,x-1] != ' ') n++;
+                                if(x < 1 || y > Utils.SCREEN_SIZE_Y-2 || image[y+1,x-1] != ' ') n++;
+
+                                if(y < 1 || x > Utils.SCREEN_SIZE_X-2 || image[y-1,x+1] != ' ') n++;
+                                if(y > Utils.SCREEN_SIZE_Y-2 || x > Utils.SCREEN_SIZE_X-2 || image[y+1,x+1] != ' ') n++;
+                            }
+
+                            if(y < 1 || image[y-1,x] != ' ') n++;
+                            if(y > Utils.SCREEN_SIZE_Y-2 || image[y+1,x] != ' ') n++;
+                            if(x < 1 || image[y,x-1] != ' ') n++;
+                            if(x > Utils.SCREEN_SIZE_X-2 || image[y,x+1] != ' ') n++;
+
+                            // Bit hacky, 4*1 = 4 (thin), 4*2 = 8 (thick)
+                            if(n == 4*Utils.OUTLINE_MODE) c  = ' ';
+                        }
+
+
+
                         // Move character to new buffer
-                        buf[y*Utils.SCREEN_SIZE_X + x].Char.AsciiChar = Convert.ToByte(image[y,x]);
+                        buf[y*Utils.SCREEN_SIZE_X + x].Char.AsciiChar = Convert.ToByte(c);
+                    
+                        
 
                         // Colours
                         short col = 0;
@@ -184,7 +215,7 @@ namespace Asteroids
                                 break;
                             
                             case Utils.SCORE_CHARACTER:
-                                col = 7; // Orange
+                                col = 6; // Gold
                                 break;
                         }  
                         buf[y*Utils.SCREEN_SIZE_X + x].Attributes = col;
@@ -203,11 +234,6 @@ namespace Asteroids
                     ref rect
                 );
             }
-
-
-
-
-            Console.SetCursorPosition(0,0);
 
         }
         
@@ -235,6 +261,9 @@ namespace Asteroids
             return image;
         }
 
+        // n = number to be drawn
+        // index = the place where the number should be placed
+        // type = (0 = score) & (1 = High score)
         private static char[,] AddNumber(char[,] image, int n, int index,int type)
         {
             // Go over every pixel in a number
@@ -250,14 +279,14 @@ namespace Asteroids
                         {
                             // Place the correct pixel from the correct number at the correct location
                             // and add some offsets
-                            image[y+1 + 6*type,x+1+index*7] = 'S';
+                            image[y+1 + 6*type,x+1+index*7] = Utils.SCORE_CHARACTER;
                         }
                         // High score
                         else if (type == 1)
                         {
                             // Place the correct pixel from the correct number at the correct location
                             // and add some offsets     
-                            image[y+1 + 6*type,x+1+index*7] = 'H';
+                            image[y+1 + 6*type,x+1+index*7] = Utils.HIGHSCORE_CHARACTER;
                         }
                         
                     }

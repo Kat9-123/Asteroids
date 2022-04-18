@@ -23,7 +23,6 @@ namespace Asteroids
             int p = 0;
 
             // Choose a random polygon depending on the type of asteroid.
-
             switch(type)
             {
                 // Big

@@ -31,7 +31,6 @@ namespace Asteroids
         // It assumes that bullets are points.
         public static void TestBulletCollision(List<Bullet> bullets, List<Asteroid> asteroids)
         {
-
             for (int bullet = 0; bullet < bullets.Count; bullet++)
             {
                 for (int asteroid = 0; asteroid < asteroids.Count; asteroid++)
@@ -126,7 +125,7 @@ namespace Asteroids
                 {
                     end = polygon[0];
                 }
-                // Else connect to next vector
+                // Else connect to the next vector
                 else { end = polygon[startIndex+1]; }
                 
                 // Check if there is an intersection
