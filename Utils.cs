@@ -16,7 +16,7 @@ namespace Asteroids
 
         // 0 = Normal mode, 1 = Thin outlines, 2 = Thick outlines
         // It does reduce performance, so be wary
-        public const short OUTLINE_MODE = 2;
+        public const short OUTLINE_MODE = 0;
         
 
         public const string FONT = "Courier New";
